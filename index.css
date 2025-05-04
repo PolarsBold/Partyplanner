@@ -1,4 +1,66 @@
 * {
+  box-sizing: border-box;
   background-color: rgb(29, 29, 29);
   color: aliceblue;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+body {
+  width: 100%;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+article {
+  width: 50%;
+}
+
+article div {
+  margin: 1rem;
+  padding: 0.25rem;
+  border: 1px solid aliceblue;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  font-style: normal;
+}
+
+.h2-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 1.5rem;
+}
+
+.p-header {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+
+.d-header {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+
+#app {
+  display: flex;
+}
+
+.data-container {
+  margin-left: 1rem;
+  width: 400px;
+}
+
+.data-container h3 {
+  font-size: 1.2rem;
+}
+
+.data-container > :nth-child(2) {
+  font-style: italic;
 }

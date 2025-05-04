@@ -1,7 +1,7 @@
 // === consts ===
-const partiesContainer = document.querySelector("#app");
+const $app = document.querySelector("#app");
+const partiesContainer = document.createElement("article");
 const partyDataContainer = document.createElement("section");
-document.body.append(partyDataContainer);
 
 // === functions ===
 async function getParties() {
@@ -33,6 +33,7 @@ async function partiesUI() {
       });
       partiesContainer.appendChild(partyDiv);
     });
+    return partiesContainer;
   } catch (err) {
     console.log(err);
   }
@@ -40,6 +41,7 @@ async function partiesUI() {
 
 function partyInfoUI(partyObject) {
   const partyInfoContainer = document.createElement("section");
+  partyInfoContainer.classList.add("data-container");
   const nameIdContainer = document.createElement("h3");
   nameIdContainer.innerText = `${partyObject.name} #${partyObject.id}`;
   const partyTimeLocation = document.createElement("p");
@@ -60,14 +62,28 @@ function partyInfoUI(partyObject) {
 function header() {
   const h1 = document.createElement("h1");
   h1.innerText = "Party Planner";
+  const h2Container = document.createElement("div");
+  h2Container.classList.add("h2-container");
   const h2Parties = document.createElement("h2");
+  h2Parties.classList.add("p-header");
   h2Parties.innerText = "Upcoming parties";
   const h2Data = document.createElement("h2");
+  h2Data.classList.add("d-header");
   h2Data.innerText = "Party details";
-  document.body.prepend(h1, h2Parties, h2Data);
+  h2Container.append(h2Parties, h2Data);
+  document.body.prepend(h1, h2Container);
 }
 
+async function render() {
+  try {
+    header();
+    const formattedParties = await partiesUI();
+    $app.innerHTML = "<section id=names></section><article id=data></article>";
+    $app.querySelector("section#names").replaceWith(formattedParties);
+    $app.querySelector("article#data").replaceWith(partyDataContainer);
+  } catch (err) {
+    console.log(err);
+  }
+}
 // === body ===
-document.body.append(partyDataContainer);
-header();
-partiesUI();
+render();
