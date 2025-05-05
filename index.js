@@ -42,15 +42,20 @@ async function partiesUI() {
 function partyInfoUI(partyObject) {
   const partyInfoContainer = document.createElement("section");
   partyInfoContainer.classList.add("data-container");
+
   const nameIdContainer = document.createElement("h3");
   nameIdContainer.innerText = `${partyObject.name} #${partyObject.id}`;
+
   const partyTimeLocation = document.createElement("p");
   partyTimeLocation.classList.add("date-location");
+
   const date = partyObject.date;
   const formattedDate = new Date(date).toLocaleDateString();
   partyTimeLocation.innerHTML = `${formattedDate}<br>${partyObject.location}`;
+
   const partyDescription = document.createElement("p");
   partyDescription.innerText = `${partyObject.description}`;
+
   partyInfoContainer.append(
     nameIdContainer,
     partyTimeLocation,
@@ -62,14 +67,18 @@ function partyInfoUI(partyObject) {
 function header() {
   const h1 = document.createElement("h1");
   h1.innerText = "Party Planner";
+
   const h2Container = document.createElement("div");
   h2Container.classList.add("h2-container");
+
   const h2Parties = document.createElement("h2");
   h2Parties.classList.add("p-header");
   h2Parties.innerText = "Upcoming parties";
+
   const h2Data = document.createElement("h2");
   h2Data.classList.add("d-header");
   h2Data.innerText = "Party details";
+
   h2Container.append(h2Parties, h2Data);
   document.body.prepend(h1, h2Container);
 }
